@@ -8,7 +8,7 @@ public class ChangingDeliveryCityFlow {
         "//span[@class='simple-menu__link simple-menu__link--address j-geocity-link j-wba-header-item']");
     public static By searchAddressInputXpath = By.xpath(
         "//input[@class='ymaps-2-1-79-searchbox-input__input'][1]");
-    public static String searchCityValue = "Санкт-Петербург";
+    public static String searchCityValue = "РЎР°РЅРєС‚-РџРµС‚РµСЂР±СѓСЂРі";
     public static By firstDeliveryAddressXpath = By.xpath(
         "//span[@class='address-item__name-text'][1]/span");
     public static By pickupPointInfoXpath = By.xpath(

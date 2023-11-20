@@ -7,19 +7,19 @@ public class AddingProductInBagFlow {
     public static By filtersXpath = By.xpath(
         "//button[@class='nav-element__burger j-menu-burger-btn j-wba-header-item hide-mobile']");
     public static By householdAppliancesXpath = By.xpath(
-        "//ul[@class='menu-burger__main-list']//a[text()='Бытовая техника']");
+        "//ul[@class='menu-burger__main-list']//a[text()='Р‘С‹С‚РѕРІР°СЏ С‚РµС…РЅРёРєР°']");
     public static By homeAppliancesXpath = By.xpath(
-        "//div[@data-menu-id='16107']//span[text()='Техника для дома']");
+        "//div[@data-menu-id='16107']//span[text()='РўРµС…РЅРёРєР° РґР»СЏ РґРѕРјР°']");
     public static By hooversXpath = By.xpath(
-        "//div[@data-menu-id='16107']//a[text()='Пылесосы и пароочистители']");
-    public static String expectedPageTitle = "Пылесосы и пароочистители";
+        "//div[@data-menu-id='16107']//a[text()='РџС‹Р»РµСЃРѕСЃС‹ Рё РїР°СЂРѕРѕС‡РёСЃС‚РёС‚РµР»Рё']");
+    public static String expectedPageTitle = "РџС‹Р»РµСЃРѕСЃС‹ Рё РїР°СЂРѕРѕС‡РёСЃС‚РёС‚РµР»Рё";
     public static By hooversPageTitleXpath = By.xpath("//div[@class='catalog-title-wrap']/h1");
     public static By fullFilterXpath = By.xpath("//div[@class='breadcrumbs__container']");
     public static String expectedFullFilter = """
-        Главная
-        Бытовая техника
-        Техника для дома
-        Пылесосы и пароочистители""";
+        Р“Р»Р°РІРЅР°СЏ
+        Р‘С‹С‚РѕРІР°СЏ С‚РµС…РЅРёРєР°
+        РўРµС…РЅРёРєР° РґР»СЏ РґРѕРјР°
+        РџС‹Р»РµСЃРѕСЃС‹ Рё РїР°СЂРѕРѕС‡РёСЃС‚РёС‚РµР»Рё""";
     public static By firstProductBrandNameXpath = By.xpath(
         "//span[@class='product-card__brand'][1]");
     public static By firstProductNameXpath = By.xpath(

@@ -7,13 +7,13 @@ public class WorkingWithSearchBarFlow {
     public static By searchInputId = By.id("searchInput");
     public static String searchValue = "Iphone 13";
     public static By searchResultXpath = By.xpath("//h1[@class='searching-results__title']");
-    public static String searchResultExpectedText = "По запросу Iphone 13 найдено";
+    public static String searchResultExpectedText = "РџРѕ Р·Р°РїСЂРѕСЃСѓ Iphone 13 РЅР°Р№РґРµРЅРѕ";
     public static By firstFilterXpath = By.xpath(
         "//button[@class='dropdown-filter__btn dropdown-filter__btn--burger']");
     public static String expectedFirstFilter = "Iphone 13";
     public static By secondFilterXpath = By.xpath(
         "//button[@class='dropdown-filter__btn dropdown-filter__btn--sorter'][1]");
-    public static String expectedSecondFilter = "По популярности";
+    public static String expectedSecondFilter = "РџРѕ РїРѕРїСѓР»СЏСЂРЅРѕСЃС‚Рё";
     public static By firstProductBrandXpath = By.xpath("//span[@class='product-card__brand'][1]");
     public static String expectedFirstProductBrand = "Apple";
 }

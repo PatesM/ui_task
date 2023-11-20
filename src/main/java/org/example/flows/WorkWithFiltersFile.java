@@ -5,21 +5,21 @@ import org.openqa.selenium.By;
 public class WorkWithFiltersFile {
 
     public static By electronicsXpath = By.xpath(
-        "//ul[@class='menu-burger__main-list']//a[text()='Электроника']");
+        "//ul[@class='menu-burger__main-list']//a[text()='Р­Р»РµРєС‚СЂРѕРЅРёРєР°']");
     public static By computersAndLaptopsXpath = By.xpath(
-        "//div[@data-menu-id='4830']//span[text()='Ноутбуки и компьютеры']");
-    public static By laptopsXpath = By.xpath("//div[@data-menu-id='4830']//a[text()='Ноутбуки']");
+        "//div[@data-menu-id='4830']//span[text()='РќРѕСѓС‚Р±СѓРєРё Рё РєРѕРјРїСЊСЋС‚РµСЂС‹']");
+    public static By laptopsXpath = By.xpath("//div[@data-menu-id='4830']//a[text()='РќРѕСѓС‚Р±СѓРєРё']");
     public static By laptopsPageTitleXpath = By.xpath("//div[@class='catalog-title-wrap']/h1");
-    public static String expectedLaptopsPageTitle = "Ноутбуки и ультрабуки";
+    public static String expectedLaptopsPageTitle = "РќРѕСѓС‚Р±СѓРєРё Рё СѓР»СЊС‚СЂР°Р±СѓРєРё";
     public static By allFiltersXpath = By.xpath(
         "//button[@class='dropdown-filter__btn dropdown-filter__btn--all']");
     public static By priceFromXpath = By.xpath("//input[@class='j-price'][@name='startN']");
     public static By priceToXpath = By.xpath("//input[@class='j-price'][@name='endN']");
-    public static String expectedPrice = "от 100 000 до 140 000";
-    public static By expectedDeliveryDurationXpath = By.xpath("//span[text()='до 3 дней']");
+    public static String expectedPrice = "РѕС‚ 100 000 РґРѕ 140 000";
+    public static By expectedDeliveryDurationXpath = By.xpath("//span[text()='РґРѕ 3 РґРЅРµР№']");
     public static By expectedBrandXpath = By.xpath(
         "//div[@class='checkbox-with-text j-list-item']/span[text()='Apple'][1]");
-    public static By screenFilterXpath = By.xpath("//h3[text()='Разрешение экрана']");
+    public static By screenFilterXpath = By.xpath("//h3[text()='Р Р°Р·СЂРµС€РµРЅРёРµ СЌРєСЂР°РЅР°']");
     public static By expectedScreenDiagonalXpath = By.xpath("//span[text()='13.3\"']");
     public static By showButtonXpath = By.xpath(
         "//button[@class='filters-desktop__btn-main btn-main']");

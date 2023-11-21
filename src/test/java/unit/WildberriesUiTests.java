@@ -36,9 +36,13 @@ import static org.example.flows.WorkWithFiltersFile.computersAndLaptopsXpath;
 import static org.example.flows.WorkWithFiltersFile.countProductsXpath;
 import static org.example.flows.WorkWithFiltersFile.deliveryDurationXpath;
 import static org.example.flows.WorkWithFiltersFile.electronicsXpath;
+import static org.example.flows.WorkWithFiltersFile.expectedBrand;
 import static org.example.flows.WorkWithFiltersFile.expectedBrandXpath;
+import static org.example.flows.WorkWithFiltersFile.expectedDelivery;
 import static org.example.flows.WorkWithFiltersFile.expectedDeliveryDurationXpath;
+import static org.example.flows.WorkWithFiltersFile.expectedDiagonal;
 import static org.example.flows.WorkWithFiltersFile.expectedLaptopsPageTitle;
+import static org.example.flows.WorkWithFiltersFile.expectedPrice;
 import static org.example.flows.WorkWithFiltersFile.expectedScreenDiagonalXpath;
 import static org.example.flows.WorkWithFiltersFile.filterCountProductsXpath;
 import static org.example.flows.WorkWithFiltersFile.laptopsPageTitleXpath;
@@ -46,6 +50,7 @@ import static org.example.flows.WorkWithFiltersFile.laptopsXpath;
 import static org.example.flows.WorkWithFiltersFile.pageCountProductsXpath;
 import static org.example.flows.WorkWithFiltersFile.priceFromXpath;
 import static org.example.flows.WorkWithFiltersFile.priceToXpath;
+import static org.example.flows.WorkWithFiltersFile.priceXpath;
 import static org.example.flows.WorkWithFiltersFile.productsListXpath;
 import static org.example.flows.WorkWithFiltersFile.resetAllButtonXpath;
 import static org.example.flows.WorkWithFiltersFile.screenDiagonalXpath;
@@ -65,6 +70,7 @@ import static org.example.flows.WorkingWithSearchBarFlow.secondFilterXpath;
 import io.qameta.allure.Description;
 import org.example.steps.asserts.AssertWildberriesUiTests;
 import org.example.steps.selenium_steps.SeleniumMethods;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -84,6 +90,11 @@ public class WildberriesUiTests {
 
     @AfterEach
     void closeUp() {
+        seleniumMethods.closeBrowser();
+    }
+
+    @AfterAll
+    static void afterAll() {
         quitDriver();
     }
 
@@ -124,7 +135,6 @@ public class WildberriesUiTests {
 
         seleniumMethods.until(firstDeliveryAddressXpath, searchCityValue);
         String firstAddressText = seleniumMethods.getElementText(firstDeliveryAddressXpath);
-        seleniumMethods.clickElement(firstDeliveryAddressXpath);
 
         boolean pickupPointInfoWindowIsDisplayed = seleniumMethods.webElementIsDisplayed(
             pickupPointInfoXpath);
@@ -204,26 +214,17 @@ public class WildberriesUiTests {
         seleniumMethods.insertIntoInput(priceToXpath, "140000");
 
         seleniumMethods.clickElement(expectedDeliveryDurationXpath);
-        String expectedDeliveryDurationText = seleniumMethods.getElementText(
-            expectedDeliveryDurationXpath);
-
         seleniumMethods.clickElement(expectedBrandXpath);
-        String expectedBrandText = seleniumMethods.getElementText(expectedBrandXpath)
-            .substring(0, 5);
-
         seleniumMethods.scrollPage(screenFilterXpath);
-
         seleniumMethods.clickElement(expectedScreenDiagonalXpath);
-        String expectedScreenDiagonalText = seleniumMethods.getElementText(
-            expectedScreenDiagonalXpath).substring(0, 5);
 
-        String filterCountProductsText = seleniumMethods.getElementText(filterCountProductsXpath)
-            .substring(6);
+        String filterCountProductsText = seleniumMethods.getElementText(filterCountProductsXpath);
 
         seleniumMethods.clickElement(showButtonXpath);
 
         String deliveryDurationText = seleniumMethods.getElementText(deliveryDurationXpath);
         String brandText = seleniumMethods.getElementText(brandXpath);
+        String price = seleniumMethods.getElementText(priceXpath);
         String screenDiagonalText = seleniumMethods.getElementText(screenDiagonalXpath);
         boolean resetAllButtonIsEnabled = seleniumMethods.buttonIsEnabled(resetAllButtonXpath);
 
@@ -234,8 +235,9 @@ public class WildberriesUiTests {
         assertion.assertionTextCorrect(filterCountProductsText, pageCountProductsText);
         assertion.assertionTextCorrect(expectedCountProducts, countProducts);
         assertion.assertionElementIsActive(resetAllButtonIsEnabled);
-        assertion.assertionTextCorrect(expectedDeliveryDurationText, deliveryDurationText);
-        assertion.assertionTextCorrect(expectedBrandText, brandText);
-        assertion.assertionTextCorrect(expectedScreenDiagonalText, screenDiagonalText);
+        assertion.assertionTextCorrect(expectedDelivery, deliveryDurationText);
+        assertion.assertionTextCorrect(expectedBrand, brandText);
+        assertion.assertionTextCorrect(expectedPrice, price);
+        assertion.assertionTextCorrect(expectedDiagonal, screenDiagonalText);
     }
 }

@@ -13,10 +13,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class SeleniumMethods {
 
-    private final WebDriver driver = configureWebDriver();
-    private final Actions action = new Actions(driver);
+    private WebDriver driver;
+    private Actions action;
 
     public void openBrowser() {
+        driver = configureWebDriver();
+        action = new Actions(driver);
         driver.manage().window().maximize();
         driver.get(WB_MAIN_PAGE_URL);
         wait.until(
@@ -32,7 +34,7 @@ public class SeleniumMethods {
     }
 
     public void clickElement(By element) {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(element));
+        wait.until(ExpectedConditions.elementToBeClickable(element));
         searchWebElement(element).click();
     }
 
@@ -81,5 +83,9 @@ public class SeleniumMethods {
 
     public void scrollPage(By element) {
         action.scrollToElement(driver.findElement(element)).perform();
+    }
+
+    public void closeBrowser() {
+        driver.close();
     }
 }

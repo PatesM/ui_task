@@ -11,10 +11,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Driver {
 
-    public static final WebDriver driver = new ChromeDriver();
+    public static WebDriver driver;
     public static Wait<WebDriver> wait;
 
     public static WebDriver configureWebDriver() {
+        driver = new ChromeDriver();
         System.setProperty(CHROME_WEB_DRIVER_KEY, CHROME_WEB_DRIVER_VALUE);
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));

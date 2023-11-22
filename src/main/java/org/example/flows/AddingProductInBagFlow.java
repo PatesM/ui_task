@@ -24,8 +24,8 @@ public class AddingProductInBagFlow {
         "//span[@class='product-card__brand'][1]");
     public static By firstProductNameXpath = By.xpath(
         "//span[@class='product-card__name'][1]");
-    public static By firstProductPriceXpath = By.xpath("//ins[@class='price__lower-price'][1]");
-
+    public static By firstProductPriceXpath = By.xpath(
+        "//p[@class='product-card__price price']//ins[@class='price__lower-price'][1]");
     public static By firstProductXpath = By.xpath(
         "//a[@class='product-card__link j-card-link j-open-full-product-card'][1]");
     public static By addToBagButtonXpath = By.xpath(
@@ -36,7 +36,8 @@ public class AddingProductInBagFlow {
         "//span[@class='navbar-pc__icon navbar-pc__icon--basket']");
     public static By productNameInBagXpath = By.xpath(
         "//a[@class='good-info__title j-product-popup']");
-    public static By firstProductPriceInBagXpath = By.xpath("//div[@class='list-item__price-new']");
+    public static By firstProductPriceInBagXpath = By.xpath(
+        "//div[@class='list-item__price']/div[@class='list-item__price-new']");
     public static By sumPriceXpath = By.xpath(
         "//div[@class='b-top__count line']/span[@class='b-right']");
     public static By orderButtonXpath = By.xpath("//div[@class='basket-order__b-btn b-btn']");

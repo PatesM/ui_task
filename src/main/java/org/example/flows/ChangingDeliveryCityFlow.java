@@ -17,5 +17,4 @@ public class ChangingDeliveryCityFlow {
     public static By selectButtonXpath = By.xpath("//button[@class='details-self__btn btn-main']");
     public static By pickupPointAddressMainPageXpath = By.xpath(
         "//span[@class='simple-menu__link simple-menu__link--address j-geocity-link j-wba-header-item']");
-    public static String mainPageXpath = "//base[@href='https://www.wildberries.ru/']";
 }

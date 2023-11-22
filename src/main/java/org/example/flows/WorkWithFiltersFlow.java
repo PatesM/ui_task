@@ -2,7 +2,7 @@ package org.example.flows;
 
 import org.openqa.selenium.By;
 
-public class WorkWithFiltersFile {
+public class WorkWithFiltersFlow {
 
     public static By electronicsXpath = By.xpath(
         "//ul[@class='menu-burger__main-list']//a[text()='Электроника']");

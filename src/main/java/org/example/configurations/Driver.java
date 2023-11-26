@@ -11,7 +11,7 @@ public class Driver {
         Configuration.browser = "chrome";
         Configuration.browserSize = "1920x1080";
         Configuration.headless = false;
-        Configuration.timeout = 8000;
+        Configuration.timeout = 20000;
     }
 
     public static void quitDriver() {

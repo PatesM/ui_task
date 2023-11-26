@@ -2,87 +2,69 @@ package org.example.steps.selenide_steps;
 
 import static com.codeborne.selenide.Condition.enabled;
 import static com.codeborne.selenide.Condition.interactable;
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
-import static com.codeborne.selenide.Selenide.actions;
 import static com.codeborne.selenide.Selenide.open;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
 public class SelenideMethods {
 
-    public void openBrowser(String url) {
+    public static void openBrowser(String url, SelenideElement selenideElement) {
         open(url);
-        searchWebElement(By.xpath("//div[@class='product-card__top-wrap']")).shouldBe(visible);
+        selenideElement.shouldBe(visible);
     }
 
-    public SelenideElement searchWebElement(By element) {
-        return $(element);
+    public static void clickSelenideElement(SelenideElement selenideElement) {
+        selenideElement.shouldBe(visible, interactable).click();
     }
 
-    public int countProducts(By element) {
-        return $$(element).size();
+    public static void sendKeysToInput(SelenideElement selenideElement, String itemName) {
+        selenideElement.shouldBe(visible, interactable).sendKeys(itemName + Keys.ENTER);
     }
 
-    public void clickElement(By selenideElement) {
-        searchWebElement(selenideElement).shouldBe(visible, interactable).click();
+    public static String getSelenideElementText(SelenideElement selenideElement) {
+        return selenideElement.shouldBe(visible).text();
     }
 
-    public void selectFirstDeliveryAddress(By element, String searchCityValue) {
-        searchWebElement(element).shouldHave(text(searchCityValue)).click();
+    public static int countProducts(ElementsCollection elementsCollection) {
+        return elementsCollection.size();
     }
 
-    public void moveToElement(By element) {
-        SelenideElement selenideElement = searchWebElement(element).shouldBe(visible);
-        actions().moveToElement(selenideElement).build().perform();
+    public static boolean webElementIsDisplayed(SelenideElement selenideElement) {
+        return selenideElement.isDisplayed();
     }
 
-    public String getPriceIntoBag(By element, String price) {
-        return searchWebElement(element).shouldBe(visible).shouldHave(text(price)).text();
-    }
-
-    public void searchItem(By element, String itemName) {
-        searchWebElement(element).shouldBe(visible, interactable).sendKeys(itemName + Keys.ENTER);
-    }
-
-    public boolean webElementIsDisplayed(By element) {
-        return searchWebElement(element).isDisplayed();
-    }
-
-    public String getElementText(By element) {
-        return searchWebElement(element).shouldBe(visible).text();
-    }
-
-    public String getWebPageUrl() {
+    public static String getWebPageUrl() {
         return WebDriverRunner.url();
     }
 
-    public boolean buttonIsEnabled(By element) {
-        return searchWebElement(element).isEnabled();
+    public static void moveToElement(SelenideElement selenideElement) {
+        selenideElement.shouldBe(visible, interactable).hover();
     }
 
-    public void clearInput(By element) {
-        searchWebElement(element).shouldBe(visible, enabled).clear();
+    public static boolean buttonIsEnabled(SelenideElement selenideElement) {
+        return selenideElement.isEnabled();
     }
 
-    public void insertIntoInput(By element, String value) {
-        clearInput(element);
-        clearInput(element);
-        searchWebElement(element).sendKeys(value);
+    public static void clearInput(SelenideElement selenideElement) {
+        selenideElement.shouldBe(visible, enabled).clear();
     }
 
-    public void scrollPage(By element) {
-        SelenideElement selenideElement = searchWebElement(element);
-        actions().scrollToElement(selenideElement).perform();
+    public static void insertIntoInput(SelenideElement selenideElement, String value) {
+        clearInput(selenideElement);
+        clearInput(selenideElement);
+        selenideElement.sendKeys(value);
     }
 
-    public void closeBrowser() {
+    public static void scrollPage(SelenideElement selenideElement) {
+        selenideElement.scrollIntoView(true);
+    }
+
+    public static void closeBrowser() {
         Selenide.closeWindow();
     }
 }

@@ -8,6 +8,7 @@ import static org.example.steps.selenide_steps.SelenideMethods.getSelenideElemen
 import static org.example.steps.selenide_steps.SelenideMethods.insertIntoInput;
 import static org.example.steps.selenide_steps.SelenideMethods.scrollPage;
 
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 
 public class Filters {
@@ -22,7 +23,7 @@ public class Filters {
         "//li[@class='filter__item']/div[@class='checkbox-with-text j-list-item']/span[text()='13.3\"']");
     private final SelenideElement showButton = $x(
         "//button[@class='filters-desktop__btn-main btn-main']");
-    private final SelenideElement filterCountProducts = $x("//span[text()='13.3\"']/span");
+    private final SelenideElement filterCountProducts = $x("//p[@class='filters-desktop__count-goods']"); //span[text()='13.3"']/span
     private final SelenideElement screenFilter = $x("//h3[text()='Разрешение экрана']");
 
     public void insertPriceFromTo() {
@@ -48,6 +49,7 @@ public class Filters {
     }
 
     public String getProductsCount() {
-        return getSelenideElementText(filterCountProducts);
+        Selenide.sleep(1000);
+        return getSelenideElementText(filterCountProducts).replaceAll("\\D+", "");
     }
 }

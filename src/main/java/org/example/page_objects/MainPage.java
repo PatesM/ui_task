@@ -20,11 +20,13 @@ public class MainPage {
 
     public ItemsResultPage findProduct(String itemName) {
         headerBar.searchItem(itemName);
+
         return new ItemsResultPage();
     }
 
     public ChangeDeliveryCityPage openChangeDeliveryCityPage() {
         headerBar.clickChangeCityButton();
+
         return new ChangeDeliveryCityPage();
     }
 
@@ -38,6 +40,7 @@ public class MainPage {
 
     public CategoriesPage openCategories() {
         headerBar.clickOpenCategoriesButton();
+
         return new CategoriesPage();
     }
 }

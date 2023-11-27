@@ -33,6 +33,7 @@ public class CategoriesPage {
                 clickSelenideElement(laptops);
             }
         }
+
         return new ItemsResultPage();
     }
 }

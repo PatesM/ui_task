@@ -3,23 +3,19 @@ package unit;
 import static org.example.configurations.Driver.configureWebDriver;
 import static org.example.configurations.Driver.quitDriver;
 import static org.example.configurations.Properties.WB_MAIN_PAGE_URL;
-import static org.example.flows.AddingProductInBagFlow.expectedBagNotification;
-import static org.example.flows.AddingProductInBagFlow.expectedFullFilter;
-import static org.example.flows.AddingProductInBagFlow.expectedPageTitle;
 import static org.example.flows.AddingProductInBagFlow.hoversCategory;
 import static org.example.flows.ChangingDeliveryCityFlow.deliveryCity;
-import static org.example.flows.WorkWithFiltersFlow.expectedBrand;
-import static org.example.flows.WorkWithFiltersFlow.expectedDeliveryTime;
-import static org.example.flows.WorkWithFiltersFlow.expectedDiagonal;
-import static org.example.flows.WorkWithFiltersFlow.expectedLaptopsPageTitle;
-import static org.example.flows.WorkWithFiltersFlow.expectedPrice;
 import static org.example.flows.WorkWithFiltersFlow.laptopsCategory;
-import static org.example.flows.WorkingWithSearchBarFlow.expectedProductBrand;
-import static org.example.flows.WorkingWithSearchBarFlow.expectedSearchInputValue;
-import static org.example.flows.WorkingWithSearchBarFlow.expectedSecondFilter;
 import static org.example.flows.WorkingWithSearchBarFlow.searchValue;
-import static org.example.steps.asserts.AssertWildberriesUiTests.assertionElementIsActive;
-import static org.example.steps.asserts.AssertWildberriesUiTests.assertionTextCorrect;
+import static org.example.steps.asserts.AssertAddProductInBag.assertionBagNotificationCorrect;
+import static org.example.steps.asserts.AssertAddProductInBag.assertionOrderButtonIsEnabled;
+import static org.example.steps.asserts.AssertAddProductInBag.assertionProductToBagCorrect;
+import static org.example.steps.asserts.AssertAddProductInBag.assertionTitleAndFilterCorrect;
+import static org.example.steps.asserts.AssertChangeDeliveryCity.assertionChangeDeliveryCityCorrect;
+import static org.example.steps.asserts.AssertChangeDeliveryCity.assertionPointInfoWindowIsDisplayed;
+import static org.example.steps.asserts.AssertWorkWithFilters.assertionAddProductToBagCorrect;
+import static org.example.steps.asserts.AssertWorkWithFilters.assertionResetAllButtonIsEnabled;
+import static org.example.steps.asserts.AssertWorkingWithSearchBar.assertionSearchResultCorrect;
 import static org.example.steps.selenide_steps.SelenideMethods.closeBrowser;
 
 import io.qameta.allure.Description;
@@ -65,11 +61,7 @@ public class WildberriesUiTests {
     public void workingWithSearchBar() {
         ItemsResultPage itemsResultPage = mainPage.findProduct(searchValue).clearSearchInput();
 
-        assertionTextCorrect(searchValue, itemsResultPage.getSearchResultTitle());
-        assertionTextCorrect(searchValue, itemsResultPage.getFirstFilter());
-        assertionTextCorrect(expectedSecondFilter, itemsResultPage.getSecondFilter());
-        assertionTextCorrect(expectedProductBrand, itemsResultPage.getProductBrand());
-        assertionTextCorrect(expectedSearchInputValue, itemsResultPage.getSearchInputValue());
+        assertionSearchResultCorrect(itemsResultPage);
     }
 
     @Test
@@ -80,18 +72,14 @@ public class WildberriesUiTests {
             .selectDeliveryCity(deliveryCity);
 
         String firstDeliveryAddress = changeDeliveryCityPage.getDeliveryAddress();
-
         PickupPointInfoPage pickupPointInfoPage = changeDeliveryCityPage.selectFirstDeliveryAddress();
 
-        assertionElementIsActive(pickupPointInfoPage.pickupPointInfoWindowIsDisplayed());
+        assertionPointInfoWindowIsDisplayed(pickupPointInfoPage);
 
         String pickupPointAddress = pickupPointInfoPage.getPickupPointAddress();
-
         MainPage newMainPage = pickupPointInfoPage.selectDeliveryPickupPoint();
 
-        assertionTextCorrect(firstDeliveryAddress, pickupPointAddress);
-        assertionTextCorrect(firstDeliveryAddress, newMainPage.getPickupPointAddressMainPage());
-        assertionTextCorrect(WB_MAIN_PAGE_URL, newMainPage.getMainPageUrl());
+        assertionChangeDeliveryCityCorrect(firstDeliveryAddress, pickupPointAddress, newMainPage);
     }
 
     @Test
@@ -100,8 +88,7 @@ public class WildberriesUiTests {
     public void addProductInBag() {
         ItemsResultPage itemsResultPage = mainPage.openCategories().selectCategory(hoversCategory);
 
-        assertionTextCorrect(expectedPageTitle, itemsResultPage.getCatalogResultTitle());
-        assertionTextCorrect(expectedFullFilter, itemsResultPage.getFullFilterPath());
+        assertionTitleAndFilterCorrect(itemsResultPage);
 
         String productBrand = itemsResultPage.getProductBrand();
         String productName = itemsResultPage.getProductName();
@@ -109,17 +96,14 @@ public class WildberriesUiTests {
 
         itemsResultPage.addProductToBag();
 
-        assertionTextCorrect(expectedBagNotification, itemsResultPage.getBagNotification());
+        assertionBagNotificationCorrect(itemsResultPage);
 
         BagPage bagPage = itemsResultPage.openBag();
-
         String productPriceInBag = bagPage.getProductPriceInBag();
 
-        assertionElementIsActive(bagPage.orderButtonIsEnabled());
-
-        assertionTextCorrect(bagPage.getProductInBag(), productName + ", " + productBrand);
-        assertionTextCorrect(productPrice, productPriceInBag);
-        assertionTextCorrect(productPriceInBag, bagPage.getTotalPrice());
+        assertionOrderButtonIsEnabled(bagPage);
+        assertionProductToBagCorrect(bagPage, productBrand, productName, productPrice,
+            productPriceInBag);
     }
 
     @Test
@@ -127,8 +111,6 @@ public class WildberriesUiTests {
     @Description("Should add the product in the bag")
     public void workWithFilters() {
         ItemsResultPage itemsResultPage = mainPage.openCategories().selectCategory(laptopsCategory);
-
-        assertionTextCorrect(expectedLaptopsPageTitle, itemsResultPage.getCatalogResultTitle());
 
         itemsResultPage
             .openFilters()
@@ -143,14 +125,7 @@ public class WildberriesUiTests {
 
         ItemsResultPage newItemsResultPage = new ItemsResultPage();
 
-        assertionTextCorrect(expectedDeliveryTime, newItemsResultPage.getDeliveryTime());
-        assertionTextCorrect(expectedBrand, newItemsResultPage.getBrand());
-        assertionTextCorrect(expectedPrice, newItemsResultPage.getPrice());
-        assertionTextCorrect(expectedDiagonal, newItemsResultPage.getScreenDiagonal());
-
-        assertionElementIsActive(newItemsResultPage.resetAllButtonIsEnabled());
-
-        assertionTextCorrect(expectedProductCount, newItemsResultPage.getProductCount());
-        assertionTextCorrect(expectedProductCount, newItemsResultPage.getTotalProductsOnPage());
+        assertionResetAllButtonIsEnabled(newItemsResultPage);
+        assertionAddProductToBagCorrect(newItemsResultPage, expectedProductCount);
     }
 }

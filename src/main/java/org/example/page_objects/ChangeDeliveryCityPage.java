@@ -16,11 +16,13 @@ public class ChangeDeliveryCityPage {
 
     public ChangeDeliveryCityPage selectDeliveryCity(String deliveryCityValue) {
         sendKeysToInput(searchAddressInputXpath, deliveryCityValue);
+
         return this;
     }
 
     public PickupPointInfoPage selectFirstDeliveryAddress() {
         firstDeliveryAddress.shouldHave(text(deliveryCity)).click();
+
         return new PickupPointInfoPage();
     }
 

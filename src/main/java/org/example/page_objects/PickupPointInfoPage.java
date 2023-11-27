@@ -26,6 +26,7 @@ public class PickupPointInfoPage {
 
     public MainPage selectDeliveryPickupPoint() {
         clickSelenideElement(selectButton);
+
         return new MainPage();
     }
 }

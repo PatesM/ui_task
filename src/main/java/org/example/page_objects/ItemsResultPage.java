@@ -51,6 +51,7 @@ public class ItemsResultPage {
 
     public ItemsResultPage clearSearchInput() {
         headerBar.clickClearSearchInput();
+
         return this;
     }
 
@@ -93,6 +94,7 @@ public class ItemsResultPage {
     public ItemsResultPage addProductToBag() {
         moveToElement(firstProductBrand);
         clickSelenideElement(addToBagButton);
+
         return this;
     }
 
@@ -102,37 +104,44 @@ public class ItemsResultPage {
 
     public BagPage openBag() {
         clickSelenideElement(bagButton);
-        Selenide.sleep(500);
+        Selenide.sleep(1000);
+
         return new BagPage();
     }
 
     public ItemsResultPage openFilters() {
         clickSelenideElement(allFiltersXpath);
+
         return this;
     }
 
     public ItemsResultPage selectPriceFilter() {
         filters.insertPriceFromTo();
+
         return this;
     }
 
     public ItemsResultPage selectDeliveryTimeFilter() {
         filters.selectDeliveryTime();
+
         return this;
     }
 
     public ItemsResultPage selectBrandFilter() {
         filters.selectBrand();
+
         return this;
     }
 
     public ItemsResultPage selectScreenDiagonalFilter() {
         filters.selectScreenDiagonal();
+
         return this;
     }
 
     public ItemsResultPage applyFilters() {
         filters.clickShowButton();
+
         return new ItemsResultPage();
     }
 

@@ -6,6 +6,7 @@ import static org.example.steps.selenide_steps.SelenideMethods.getSelenideElemen
 import static org.example.steps.selenide_steps.SelenideMethods.webElementIsDisplayed;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 
 public class PickupPointInfoPage {
 
@@ -16,14 +17,17 @@ public class PickupPointInfoPage {
     public static final SelenideElement selectButton = $x(
         "//button[@class='details-self__btn btn-main']");
 
+    @Step("Получение утрверждения, что окно с информацией о пункте доставки отображается")
     public boolean pickupPointInfoWindowIsDisplayed() {
         return webElementIsDisplayed(pickupPointInfo);
     }
 
+    @Step("Получение адреса пункта доставки")
     public String getPickupPointAddress() {
         return getSelenideElementText(pickupPointAddress);
     }
 
+    @Step("Выбор пункта доставки")
     public MainPage selectDeliveryPickupPoint() {
         clickSelenideElement(selectButton);
 

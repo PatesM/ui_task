@@ -5,6 +5,7 @@ import static org.example.steps.selenide_steps.SelenideMethods.clickSelenideElem
 import static org.example.steps.selenide_steps.SelenideMethods.moveToElement;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 
 public class CategoriesPage {
 
@@ -20,6 +21,7 @@ public class CategoriesPage {
         "//div[@data-menu-id='4830']//span[text()='Ноутбуки и компьютеры']");
     private final SelenideElement laptops = $x("//div[@data-menu-id='4830']//a[text()='Ноутбуки']");
 
+    @Step("Выбор категории товара")
     public ItemsResultPage selectCategory(String category) {
         switch (category) {
             case ("hovers") -> {

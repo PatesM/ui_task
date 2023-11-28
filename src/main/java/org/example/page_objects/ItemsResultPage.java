@@ -11,6 +11,7 @@ import static org.example.steps.selenide_steps.SelenideMethods.moveToElement;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.example.page_elements.Filters;
 import org.example.page_elements.HeaderBar;
 
@@ -24,7 +25,7 @@ public class ItemsResultPage {
     private final SelenideElement secondFilter = $x(
         "//button[@class='dropdown-filter__btn dropdown-filter__btn--sorter'][1]");
     private final SelenideElement firstProductBrand = $x("//span[@class='product-card__brand'][1]");
-    private final SelenideElement hooversPageTitle = $x("//div[@class='catalog-title-wrap']/h1");
+    private final SelenideElement categoryPageTitle = $x("//div[@class='catalog-title-wrap']/h1");
     private final SelenideElement fullFilter = $x("//div[@class='breadcrumbs__container']");
     private final SelenideElement firstProductName = $x("//span[@class='product-card__name'][1]");
     private final SelenideElement firstProductPrice = $x(
@@ -49,48 +50,59 @@ public class ItemsResultPage {
     private final ElementsCollection productsListXpath = $$x(
         "//div[@class='product-card-list']/article");
 
+    @Step("Очистка поля поиска")
     public ItemsResultPage clearSearchInput() {
         headerBar.clickClearSearchInput();
 
         return this;
     }
 
+    @Step("Получение названия категории результата поиска")
     public String getCatalogResultTitle() {
-        return getSelenideElementText(hooversPageTitle);
+        return getSelenideElementText(categoryPageTitle);
     }
 
+    @Step("Получение заголовка результата поиска")
     public String getSearchResultTitle() {
         return getSelenideElementText(searchResult);
     }
 
+    @Step("Получение названия первого фильтра")
     public String getFirstFilter() {
         return getSelenideElementText(firstFilter);
     }
 
+    @Step("Получение названия второго фильтра")
     public String getSecondFilter() {
         return getSelenideElementText(secondFilter);
     }
 
+    @Step("Получение названия бренда товара")
     public String getProductBrand() {
         return getSelenideElementText(firstProductBrand);
     }
 
+    @Step("Получение имени товара")
     public String getProductName() {
         return getSelenideElementText(firstProductName).substring(2);
     }
 
+    @Step("Получение стоимости товара")
     public String getProductPrice() {
         return getSelenideElementText(firstProductPrice);
     }
 
+    @Step("Получение текущего значения поля поиска")
     public String getSearchInputValue() {
         return headerBar.getSearchInputValue();
     }
 
+    @Step("Получение полного пути категорий поиска")
     public String getFullFilterPath() {
         return getSelenideElementText(fullFilter);
     }
 
+    @Step("Добавление товара в корзиру")
     public ItemsResultPage addProductToBag() {
         moveToElement(firstProductBrand);
         clickSelenideElement(addToBagButton);
@@ -98,10 +110,12 @@ public class ItemsResultPage {
         return this;
     }
 
+    @Step("Получение уведомления корзины")
     public String getBagNotification() {
         return getSelenideElementText(bagNotification);
     }
 
+    @Step("Открытие корзины")
     public BagPage openBag() {
         clickSelenideElement(bagButton);
         Selenide.sleep(1000);
@@ -109,70 +123,84 @@ public class ItemsResultPage {
         return new BagPage();
     }
 
+    @Step("Открытие фильтров")
     public ItemsResultPage openFilters() {
         clickSelenideElement(allFiltersXpath);
 
         return this;
     }
 
-    public ItemsResultPage selectPriceFilter() {
-        filters.insertPriceFromTo();
+    @Step("Выбор диапазона цены товара")
+    public ItemsResultPage insertPriceFilter(String priceFromValue, String priceToValue) {
+        filters.insertPriceFromTo(priceFromValue, priceToValue);
 
         return this;
     }
 
+    @Step("Выбор срока достаки")
     public ItemsResultPage selectDeliveryTimeFilter() {
         filters.selectDeliveryTime();
 
         return this;
     }
 
+    @Step("Выбор бренда товара")
     public ItemsResultPage selectBrandFilter() {
         filters.selectBrand();
 
         return this;
     }
 
+    @Step("Выбор диагонали экрана товара")
     public ItemsResultPage selectScreenDiagonalFilter() {
         filters.selectScreenDiagonal();
 
         return this;
     }
 
+    @Step("Применение фильтров")
     public ItemsResultPage applyFilters() {
         filters.clickShowButton();
 
         return new ItemsResultPage();
     }
 
+    @Step("Получение ожидаемого количества товаров на странице")
     public String getExpectedProductCount() {
         return filters.getProductsCount();
     }
 
+    @Step("Получение значение срока достаки товара")
     public String getDeliveryTime() {
         return getSelenideElementText(deliveryTime);
     }
 
+    @Step("Получение значения имени бренда товара")
     public String getBrand() {
         return getSelenideElementText(brand);
     }
 
+    @Step("Получение цены товара на странице поиска")
     public String getPrice() {
         return getSelenideElementText(price);
     }
 
+    @Step("Получение значения диагонали экрана товара")
     public String getScreenDiagonal() {
         return getSelenideElementText(screenDiagonal);
     }
 
+    @Step("Сброс фильтров на странице поиска")
     public boolean resetAllButtonIsEnabled() {
         return buttonIsEnabled(resetAllButtonXpath);
     }
 
+    @Step("Получение значения количества товаров на странице")
     public String getProductCount() {
         return getSelenideElementText(countProductsXpath);
     }
 
+    @Step("Получение количества товаров на странице")
     public String getTotalProductsOnPage() {
         return String.valueOf(countProducts(productsListXpath));
     }

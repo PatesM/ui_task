@@ -6,10 +6,12 @@ import static org.example.flows.WorkingWithSearchBarFlow.expectedSecondFilter;
 import static org.example.flows.WorkingWithSearchBarFlow.searchValue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import io.qameta.allure.Step;
 import org.example.page_objects.ItemsResultPage;
 
 public class AssertWorkingWithSearchBar {
 
+    @Step("Проверка результата поиска товара")
     public static void assertionSearchResultCorrect(ItemsResultPage itemsResultPage) {
         assertEquals(searchValue, itemsResultPage.getSearchResultTitle());
         assertEquals(searchValue, itemsResultPage.getFirstFilter());

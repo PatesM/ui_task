@@ -1,8 +1,6 @@
 package org.example.page_elements;
 
 import static com.codeborne.selenide.Selenide.$x;
-import static org.example.flows.WorkWithFiltersFlow.priceFromValue;
-import static org.example.flows.WorkWithFiltersFlow.priceToValue;
 import static org.example.steps.selenide_steps.SelenideMethods.clickSelenideElement;
 import static org.example.steps.selenide_steps.SelenideMethods.getSelenideElementText;
 import static org.example.steps.selenide_steps.SelenideMethods.insertIntoInput;
@@ -10,6 +8,7 @@ import static org.example.steps.selenide_steps.SelenideMethods.scrollPage;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 
 public class Filters {
 
@@ -26,7 +25,8 @@ public class Filters {
     private final SelenideElement filterCountProducts = $x("//p[@class='filters-desktop__count-goods']"); //span[text()='13.3"']/span
     private final SelenideElement screenFilter = $x("//h3[text()='Разрешение экрана']");
 
-    public void insertPriceFromTo() {
+    @Step("")
+    public void insertPriceFromTo(String priceFromValue, String priceToValue) {
         insertIntoInput(priceFrom, priceFromValue);
         insertIntoInput(priceTo, priceToValue);
     }

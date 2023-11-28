@@ -43,8 +43,8 @@ public class SelenideMethods {
     }
 
     public static void moveToElement(SelenideElement selenideElement) {
-        Selenide.sleep(500);
-        selenideElement.shouldBe(interactable).hover();
+        Selenide.sleep(1500);
+        selenideElement.shouldBe(visible, enabled).hover();
     }
 
     public static boolean buttonIsEnabled(SelenideElement selenideElement) {

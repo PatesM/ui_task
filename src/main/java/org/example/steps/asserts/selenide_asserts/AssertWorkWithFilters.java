@@ -1,4 +1,4 @@
-package org.example.steps.asserts;
+package org.example.steps.asserts.selenide_asserts;
 
 import static org.example.flows.WorkWithFiltersFlow.expectedBrand;
 import static org.example.flows.WorkWithFiltersFlow.expectedDeliveryTime;

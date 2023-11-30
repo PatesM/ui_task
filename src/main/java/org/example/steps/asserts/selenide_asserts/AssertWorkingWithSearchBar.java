@@ -1,4 +1,4 @@
-package org.example.steps.asserts;
+package org.example.steps.asserts.selenide_asserts;
 
 import static org.example.flows.WorkingWithSearchBarFlow.expectedProductBrand;
 import static org.example.flows.WorkingWithSearchBarFlow.expectedSearchInputValue;

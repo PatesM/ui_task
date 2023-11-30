@@ -5,13 +5,14 @@ import static org.example.steps.selenide_steps.SelenideMethods.getWebPageUrl;
 import static org.example.steps.selenide_steps.SelenideMethods.openBrowser;
 
 import com.codeborne.selenide.SelenideElement;
+import io.cucumber.java.en.When;
 import io.qameta.allure.Step;
 import org.example.page_elements.HeaderBar;
 
 public class MainPage {
 
     private final HeaderBar headerBar = new HeaderBar();
-    private final SelenideElement waitingElement = $x("//div[@class='product-card__top-wrap']");
+    public static final SelenideElement waitingElement = $x("//div[@class='product-card__top-wrap']");
 
     public void openMainPage(String url) {
         openBrowser(url, waitingElement);

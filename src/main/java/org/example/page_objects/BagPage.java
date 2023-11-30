@@ -9,6 +9,7 @@ import io.qameta.allure.Step;
 
 public class BagPage {
 
+    public static final SelenideElement bagPageTitle = $x("//h1[@class='basket-section__header active']");
     private final SelenideElement productInBag = $x(
         "//a[@class='good-info__title j-product-popup']");
     private final SelenideElement firstProductPriceInBag = $x(
@@ -16,6 +17,11 @@ public class BagPage {
     private final SelenideElement totalPrice = $x(
         "//div[@class='b-top__count line']/span[@class='b-right']");
     private final SelenideElement orderButton = $x("//div[@class='basket-order__b-btn b-btn']");
+
+    @Step("Получение заголовка страницы 'Корзина'")
+    public String getBagPageTitle() {
+        return getSelenideElementText(bagPageTitle);
+    }
 
     @Step("Получение названия товара и бренда товара в корзире")
     public String getProductInBag() {

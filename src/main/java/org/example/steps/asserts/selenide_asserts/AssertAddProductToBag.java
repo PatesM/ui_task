@@ -1,4 +1,4 @@
-package org.example.steps.asserts;
+package org.example.steps.asserts.selenide_asserts;
 
 import static org.example.flows.AddingProductInBagFlow.expectedBagNotification;
 import static org.example.flows.AddingProductInBagFlow.expectedFullFilter;
@@ -10,7 +10,7 @@ import io.qameta.allure.Step;
 import org.example.page_objects.BagPage;
 import org.example.page_objects.ItemsResultPage;
 
-public class AssertAddProductInBag {
+public class AssertAddProductToBag {
 
     @Step("Проверка заголовка и категорий товара")
     public static void assertionTitleAndFilterCorrect(ItemsResultPage itemsResultPage) {

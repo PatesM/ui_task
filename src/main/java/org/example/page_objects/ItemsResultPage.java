@@ -24,30 +24,32 @@ public class ItemsResultPage {
         "//button[@class='dropdown-filter__btn dropdown-filter__btn--burger']");
     private final SelenideElement secondFilter = $x(
         "//button[@class='dropdown-filter__btn dropdown-filter__btn--sorter'][1]");
-    private final SelenideElement firstProductBrand = $x("//span[@class='product-card__brand'][1]");
-    private final SelenideElement categoryPageTitle = $x("//div[@class='catalog-title-wrap']/h1");
+    public static final SelenideElement firstProductBrand = $x(
+        "//span[@class='product-card__brand'][1]");
+    public static final SelenideElement categoryPageTitle = $x(
+        "//div[@class='catalog-title-wrap']/h1");
     private final SelenideElement fullFilter = $x("//div[@class='breadcrumbs__container']");
     private final SelenideElement firstProductName = $x("//span[@class='product-card__name'][1]");
     private final SelenideElement firstProductPrice = $x(
         "//p[@class='product-card__price price']//ins[@class='price__lower-price'][1]");
-    private final SelenideElement addToBagButton = $x(
+    public static final SelenideElement addToBagButton = $x(
         "//p[@class='product-card__order-wrap'][1]/a[@class='product-card__add-basket j-add-to-basket btn-main-sm'][1]");
     private final SelenideElement bagNotification = $x("//span[@class='navbar-pc__notify']");
-    private final SelenideElement bagButton = $x(
+    public static final SelenideElement bagButton = $x(
         "//span[@class='navbar-pc__icon navbar-pc__icon--basket']");
-    private final SelenideElement allFiltersXpath = $x(
+    public static final SelenideElement allFiltersXpath = $x(
         "//button[@class='dropdown-filter__btn dropdown-filter__btn--all']");
     private final SelenideElement deliveryTime = $x(
-        "//li[@class='your-choice__item']/span[text()='до 3 дней']");
+        "//li[@class='your-choice__item']/span[text()='до 5 дней']");
     private final SelenideElement brand = $x(
         "//li[@class='your-choice__item']/span[text()='Apple']");
     private final SelenideElement price = $x(
         "//li[@class='your-choice__item']/span[text()='от 100 000 до 140 000']");
     private final SelenideElement screenDiagonal = $x("//li[@class='your-choice__item'][4]/span");
-    private final SelenideElement resetAllButtonXpath = $x("//button[@class='your-choice__btn']");
-    private final SelenideElement countProductsXpath = $x(
+    private final SelenideElement resetAllButton = $x("//button[@class='your-choice__btn']");
+    private final SelenideElement countProducts = $x(
         "//span[@data-link='html{spaceFormatted:pagerModel.totalItems}']");
-    private final ElementsCollection productsListXpath = $$x(
+    private final ElementsCollection productsList = $$x(
         "//div[@class='product-card-list']/article");
 
     @Step("Очистка поля поиска")
@@ -192,16 +194,16 @@ public class ItemsResultPage {
 
     @Step("Сброс фильтров на странице поиска")
     public boolean resetAllButtonIsEnabled() {
-        return buttonIsEnabled(resetAllButtonXpath);
+        return buttonIsEnabled(resetAllButton);
     }
 
     @Step("Получение значения количества товаров на странице")
     public String getProductCount() {
-        return getSelenideElementText(countProductsXpath);
+        return getSelenideElementText(countProducts);
     }
 
     @Step("Получение количества товаров на странице")
     public String getTotalProductsOnPage() {
-        return String.valueOf(countProducts(productsListXpath));
+        return String.valueOf(countProducts(productsList));
     }
 }

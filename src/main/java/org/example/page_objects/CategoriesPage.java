@@ -9,17 +9,17 @@ import io.qameta.allure.Step;
 
 public class CategoriesPage {
 
-    private final SelenideElement householdAppliances = $x(
+    public static final SelenideElement householdAppliances = $x(
         "//ul[@class='menu-burger__main-list']//a[text()='Бытовая техника']");
-    private final SelenideElement homeAppliances = $x(
+    public static final SelenideElement homeAppliances = $x(
         "//div[@data-menu-id='16107']//span[text()='Техника для дома']");
-    private final SelenideElement hovers = $x(
+    public static final SelenideElement hovers = $x(
         "//div[@data-menu-id='16107']//a[text()='Пылесосы и пароочистители']");
-    private final SelenideElement electronics = $x(
+    public static final SelenideElement electronics = $x(
         "//ul[@class='menu-burger__main-list']//a[text()='Электроника']");
-    private final SelenideElement computersAndLaptops = $x(
+    public static final SelenideElement computersAndLaptops = $x(
         "//div[@data-menu-id='4830']//span[text()='Ноутбуки и компьютеры']");
-    private final SelenideElement laptops = $x("//div[@data-menu-id='4830']//a[text()='Ноутбуки']");
+    public static final SelenideElement laptops = $x("//div[@data-menu-id='4830']//a[text()='Ноутбуки']");
 
     @Step("Выбор категории товара")
     public ItemsResultPage selectCategory(String category) {

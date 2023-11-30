@@ -9,16 +9,16 @@ import static org.example.flows.WorkWithFiltersFlow.laptopsCategory;
 import static org.example.flows.WorkWithFiltersFlow.priceFromValue;
 import static org.example.flows.WorkWithFiltersFlow.priceToValue;
 import static org.example.flows.WorkingWithSearchBarFlow.searchValue;
-import static org.example.steps.asserts.AssertAddProductInBag.assertionBagNotificationCorrect;
-import static org.example.steps.asserts.AssertAddProductInBag.assertionOrderButtonIsEnabled;
-import static org.example.steps.asserts.AssertAddProductInBag.assertionProductToBagCorrect;
-import static org.example.steps.asserts.AssertAddProductInBag.assertionTitleAndFilterCorrect;
-import static org.example.steps.asserts.AssertChangeDeliveryCity.assertionChangeDeliveryCityCorrect;
-import static org.example.steps.asserts.AssertChangeDeliveryCity.assertionPointInfoWindowIsDisplayed;
-import static org.example.steps.asserts.AssertWorkWithFilters.assertionAddProductToBagCorrect;
-import static org.example.steps.asserts.AssertWorkWithFilters.assertionResetAllButtonIsEnabled;
-import static org.example.steps.asserts.AssertWorkWithFilters.assertionSearchResultTitleCorrect;
-import static org.example.steps.asserts.AssertWorkingWithSearchBar.assertionSearchResultCorrect;
+import static org.example.steps.asserts.selenide_asserts.AssertAddProductToBag.assertionBagNotificationCorrect;
+import static org.example.steps.asserts.selenide_asserts.AssertAddProductToBag.assertionOrderButtonIsEnabled;
+import static org.example.steps.asserts.selenide_asserts.AssertAddProductToBag.assertionProductToBagCorrect;
+import static org.example.steps.asserts.selenide_asserts.AssertAddProductToBag.assertionTitleAndFilterCorrect;
+import static org.example.steps.asserts.selenide_asserts.AssertChangeDeliveryCity.assertionChangeDeliveryCityCorrect;
+import static org.example.steps.asserts.selenide_asserts.AssertChangeDeliveryCity.assertionPointInfoWindowIsDisplayed;
+import static org.example.steps.asserts.selenide_asserts.AssertWorkWithFilters.assertionAddProductToBagCorrect;
+import static org.example.steps.asserts.selenide_asserts.AssertWorkWithFilters.assertionResetAllButtonIsEnabled;
+import static org.example.steps.asserts.selenide_asserts.AssertWorkWithFilters.assertionSearchResultTitleCorrect;
+import static org.example.steps.asserts.selenide_asserts.AssertWorkingWithSearchBar.assertionSearchResultCorrect;
 import static org.example.steps.selenide_steps.SelenideMethods.closeBrowser;
 
 import io.qameta.allure.Description;
@@ -85,7 +85,7 @@ public class WildberriesUiTests {
     @Test
     @Owner("PatesM")
     @Feature("Изменение города доставки")
-    @Story("Поиск и изменение города достаки")
+    @Story("Поиск и изменение города доставки")
     @Severity(SeverityLevel.NORMAL)
     @DisplayName("Изменение города доставки по названию")
     @Description("Должен найти город доставки по названию и выбрать первый адрес из списка")
@@ -106,12 +106,12 @@ public class WildberriesUiTests {
 
     @Test
     @Owner("PatesM")
-    @Feature("Добавление товара в корзиру")
-    @Story("Поиск и добавление товара в корзиру")
+    @Feature("Добавление товара в корзину")
+    @Story("Поиск и добавление товара в корзину")
     @Severity(SeverityLevel.CRITICAL)
-    @DisplayName("Поиск и добавление товара в корзиру через меню 'Категории'")
+    @DisplayName("Поиск и добавление товара в корзину через меню 'Категории'")
     @Description("Должен найти товары через меню 'Категории' и добавить первый товар в корзину")
-    public void addProductInBag() {
+    public void addProductToBag() {
         ItemsResultPage itemsResultPage = mainPage.openCategories().selectCategory(hoversCategory);
 
         assertionTitleAndFilterCorrect(itemsResultPage);

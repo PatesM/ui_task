@@ -15,14 +15,14 @@ public class Filters {
     private final SelenideElement priceFrom = $x("//input[@class='j-price'][@name='startN']");
     private final SelenideElement priceTo = $x("//input[@class='j-price'][@name='endN']");
     private final SelenideElement expectedDeliveryDurationXpath = $x(
-        "//div[@class='radio-with-text j-list-item']/span[text()='до 3 дней']");
+        "//div[@class='radio-with-text j-list-item']/span[text()='до 5 дней']");
     private final SelenideElement expectedBrand = $x(
         "//li[@class='filter__item']/div[@class='checkbox-with-text j-list-item']/span[text()='Apple'][1]");
     private final SelenideElement expectedScreenDiagonal = $x(
         "//li[@class='filter__item']/div[@class='checkbox-with-text j-list-item']/span[text()='13.3\"']");
     private final SelenideElement showButton = $x(
         "//button[@class='filters-desktop__btn-main btn-main']");
-    private final SelenideElement filterCountProducts = $x("//p[@class='filters-desktop__count-goods']"); //span[text()='13.3"']/span
+    private final SelenideElement filterCountProducts = $x("//p[@class='filters-desktop__count-goods']");
     private final SelenideElement screenFilter = $x("//h3[text()='Разрешение экрана']");
 
     @Step("")

@@ -1,4 +1,4 @@
-package org.example.steps.asserts;
+package org.example.steps.asserts.selenide_asserts;
 
 import static org.example.configurations.Properties.WB_MAIN_PAGE_URL;
 import static org.junit.jupiter.api.Assertions.assertEquals;

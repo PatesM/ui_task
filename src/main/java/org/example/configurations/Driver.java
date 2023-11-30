@@ -1,8 +1,13 @@
 package org.example.configurations;
 
+import static org.example.page_objects.MainPage.waitingElement;
+import static org.example.steps.selenide_steps.SelenideMethods.openBrowser;
+
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Allure;
 import io.qameta.allure.selenide.AllureSelenide;
@@ -26,6 +31,13 @@ public class Driver {
         Allure.addAttachment("Дата и время запуска теста", String.valueOf(LocalDate.now()));
     }
 
+    @Given("Открываем сайт {string}")
+    public void openPage(String url) {
+        configureWebDriver();
+        openBrowser(url, waitingElement);
+    }
+
+    @And("Закрывает браузер")
     public static void quitDriver() {
         Selenide.closeWebDriver();
     }

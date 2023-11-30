@@ -10,14 +10,14 @@ import io.qameta.allure.Step;
 
 public class ChangeDeliveryCityPage {
 
-    public static final SelenideElement searchAddressInputXpath = $x(
+    public static final SelenideElement searchAddressInput = $x(
         "//input[@class='ymaps-2-1-79-searchbox-input__input'][1]");
     public static final SelenideElement firstDeliveryAddress = $x(
         "//span[@class='address-item__name-text'][1]/span");
 
     @Step("Ввод и поиск города доставки")
     public ChangeDeliveryCityPage selectDeliveryCity(String deliveryCityValue) {
-        sendKeysToInput(searchAddressInputXpath, deliveryCityValue);
+        sendKeysToInput(searchAddressInput, deliveryCityValue);
 
         return this;
     }

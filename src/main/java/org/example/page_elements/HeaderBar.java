@@ -13,11 +13,11 @@ public class HeaderBar {
     private final SelenideElement changeCityButton = $x(
         "//span[@class='simple-menu__link simple-menu__link--address j-geocity-link j-wba-header-item']");
     private final SelenideElement clearSearchButton = $x(
-        "//div[@class='search-catalog__block']/div[@class='search-catalog__btn-wrap']/button");
+        "//div[@class='search-catalog__btn-wrap']/button[@class='search-catalog__btn search-catalog__btn--clear search-catalog__btn--active']");
     private final SelenideElement pickupPointAddressMainPage = $x(
         "//span[@class='simple-menu__link simple-menu__link--address j-geocity-link j-wba-header-item']");
-    private final SelenideElement categoriesButton = $x(
-        "//button[@class='nav-element__burger j-menu-burger-btn j-wba-header-item hide-mobile']");
+    public static final SelenideElement categoriesButton = $x(
+        "//button[@class='nav-element__burger j-menu-burger-btn j-wba-header-item']");
 
     public void searchItem(String itemName) {
         sendKeysToInput(searchInput, itemName);
